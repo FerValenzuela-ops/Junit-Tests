@@ -14,8 +14,7 @@ class MoneyTest {
     void testGetAmountCLP() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
         Money plataChilena = new Money(1000, pesoChileno);
-        int monto = plataChilena.getAmount();
-        assertEquals(1000, monto);
+        assertEquals(1000, plataChilena.getAmount());
 
     }
 
@@ -23,9 +22,7 @@ class MoneyTest {
     void testGetCurrency() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
         Money plataChilena = new Money(1000, pesoChileno);
-        String divisaNombre = (plataChilena.getCurrency().getName());
-        Double divisaCambio = plataChilena.getCurrency().getRate();
-        assertTrue((divisaNombre == "CLP") && (divisaCambio == 1.0 / 788));
+        assertTrue((plataChilena.getCurrency().getName() == "CLP") && (plataChilena.getCurrency().getRate() == 1.0 / 788));
 
     }
 
@@ -33,8 +30,7 @@ class MoneyTest {
     void testToStringCLP() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
         Money plataChilena = new Money(1000, pesoChileno);
-        String infoPlata = plataChilena.toString();
-        assertEquals("1000" + " " + "CLP", infoPlata);
+        assertEquals(1000 + " CLP", plataChilena.toString());
 
     }
 
@@ -42,8 +38,7 @@ class MoneyTest {
     void testUniversalValueCLP() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
         Money plataChilena = new Money(1000, pesoChileno);
-        double clpEnUSD = plataChilena.universalValue();
-        assertEquals(1.26, clpEnUSD, 0.01);
+        assertEquals(1.26, plataChilena.universalValue(), 0.01);
     }
 
     @Test
@@ -52,8 +47,7 @@ class MoneyTest {
         Money plataChilena = new Money(7880, pesoChileno);
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
         Money plataArgentino = new Money(990, pesoArgentino);
-        boolean montoEquivalente = plataChilena.equals(plataArgentino);
-        assertTrue(montoEquivalente);
+        assertTrue(plataChilena.equals(plataArgentino));
 
     }
 
@@ -64,8 +58,8 @@ class MoneyTest {
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
         Money plataArgentino = new Money(990, pesoArgentino);
 
-        Money anadirOtraMoenda = plataChilena.add(plataArgentino);
-        assertEquals(7880 * 2, anadirOtraMoenda.getAmount());
+        Money anadirOtraMoneda = plataChilena.add(plataArgentino);
+        assertEquals(7880 * 2, anadirOtraMoneda.getAmount());
     }
 
     @Test
@@ -75,16 +69,15 @@ class MoneyTest {
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
         Money plataArgentino = new Money(990, pesoArgentino);
 
-        Money restarOtraMoenda = plataChilena.sub(plataArgentino);
-        assertEquals(0, restarOtraMoenda.getAmount());
+        Money restarOtraMoneda = plataChilena.sub(plataArgentino);
+        assertEquals(0, restarOtraMoneda.getAmount());
     }
 
     @Test
     void testIsZeroCLP() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
         Money plataChilena = new Money(0, pesoChileno);
-        boolean validarCero = plataChilena.isZero();
-        assertTrue(validarCero);
+        assertTrue(plataChilena.isZero());
     }
 
     @Test
@@ -101,8 +94,7 @@ class MoneyTest {
         Money plataChilena = new Money(7880, pesoChileno);
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
         Money plataArgentino = new Money(990, pesoArgentino);
-        int compararDineros = plataChilena.compareTo(plataArgentino);
-        assertEquals(0, compararDineros);
+        assertEquals(0, plataChilena.compareTo(plataArgentino));
     }
 
 }

@@ -5,6 +5,10 @@ public class Money implements Comparable<Money> {
 
     private int amount;
     private Currency currency;
+    
+    
+    
+   
 
     /**
      * New Money
@@ -43,8 +47,7 @@ public class Money implements Comparable<Money> {
      */
     @Override
     public String toString() {
-        String amountString = this.getAmount().toString();
-        return amountString + " " + this.getCurrency().getName();
+        return this.getAmount().toString() + " " + this.getCurrency().getName();
     }
 
     /**
@@ -53,9 +56,7 @@ public class Money implements Comparable<Money> {
      * @return valor del dinero en la moneda universal
      */
     public Double universalValue() {
-        int cantidadMoneda = this.getAmount();
-        Double divisaMoneda = this.currency.getRate();
-        double valorUniversalPlata = cantidadMoneda * divisaMoneda;
+        double valorUniversalPlata = this.getAmount() * this.currency.getRate();
         return valorUniversalPlata;
     }
 
@@ -67,9 +68,7 @@ public class Money implements Comparable<Money> {
      * @return verdadero si son iguales, falso sino.
      */
     public Boolean equals(Money other) {
-        double valorUSDMoneda = this.universalValue();
-        double valorOtraMoneda = other.universalValue();
-        if (valorUSDMoneda == valorOtraMoneda) {
+        if ((double) this.universalValue() ==  other.universalValue()) {
             return true;
         } else {
             return false;
@@ -87,11 +86,7 @@ public class Money implements Comparable<Money> {
      * sumar!)
      */
     public Money add(Money other) {
-
-        double plataActualUSD = this.universalValue();
-        double plataAnadidaUSD = other.universalValue();
-        double suma = plataActualUSD + plataAnadidaUSD;
-        double aMonedaOriginal = suma * Math.pow(this.getCurrency().getRate(), -1);
+        double aMonedaOriginal = (this.universalValue() + other.universalValue()) * Math.pow(this.getCurrency().getRate(), -1);
         Money nuevaPlataTotal = new Money((int) aMonedaOriginal, this.getCurrency());
         return nuevaPlataTotal;
     }
@@ -105,10 +100,7 @@ public class Money implements Comparable<Money> {
      * de restar!)
      */
     public Money sub(Money other) {
-        double plataActualUSD = this.universalValue();
-        double plataRestadaUSD = other.universalValue();
-        double suma = plataActualUSD - plataRestadaUSD;
-        double aMonedaOriginal = suma * Math.pow(this.getCurrency().getRate(), -1);
+        double aMonedaOriginal = (this.universalValue() - other.universalValue()) * Math.pow(this.getCurrency().getRate(), -1);
         Money nuevaPlataTotal = new Money((int) aMonedaOriginal, this.getCurrency());
         return nuevaPlataTotal;
     }
@@ -134,8 +126,7 @@ public class Money implements Comparable<Money> {
      * @return nueva instancia de Money, signo invertido.
      */
     public Money negate() {
-        int dineroNegado = this.getAmount() * -1;
-        Money nuevaPlataNegada = new Money((int) dineroNegado, this.getCurrency());
+        Money nuevaPlataNegada = new Money((int) (this.getAmount() * -1), this.getCurrency());
         return nuevaPlataNegada;
     }
 

@@ -66,8 +66,7 @@ public class Currency {
      * @return la cantidad en esta moneda
      */
     public Double valueInThisCurrency(Double amount, Currency othercurrency) {
-        Double monedaATransformar = othercurrency.universalValue(amount);
-        Double valorMoneda = monedaATransformar * Math.pow(this.getRate(), -1);
+        Double valorMoneda = othercurrency.universalValue(amount) * Math.pow(this.getRate(), -1);
         return valorMoneda;
 
 

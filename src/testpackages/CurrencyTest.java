@@ -29,67 +29,58 @@ class CurrencyTest {
     @Test
     public void testUniversalValueCLP() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
-        Double valorUniversal = pesoChileno.universalValue(1.0);
-        assertEquals(1.0 / 788, valorUniversal);
+        assertEquals(1.0 / 788, pesoChileno.universalValue(1.0));
     }
 
     @Test
     public void testUniversalValueGBP() {
         Currency libra = new Currency("GBP", 1.0 / 0.73);
-        Double valorUniversal = libra.universalValue(1.0);
-        assertEquals(1.0 / 0.73, valorUniversal);
+        assertEquals(1.0 / 0.73, libra.universalValue(1.0));
     }
 
     @Test
     public void testUniversalValueARS() {
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
-        Double valorUniversal = pesoArgentino.universalValue(1.0);
-        assertEquals(1.0 / 99, valorUniversal);
+        assertEquals(1.0 / 99, pesoArgentino.universalValue(1.0));
     }
 
     @Test
     public void testGetNameCLP() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
-        String nombreMoneda = pesoChileno.getName();
-        assertEquals("CLP", nombreMoneda);
+        assertEquals("CLP", pesoChileno.getName());
 
     }
 
     @Test
     public void testGetNameARS() {
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
-        String nombreMoneda = pesoArgentino.getName();
-        assertEquals("ARS", nombreMoneda);
+        assertEquals("ARS", pesoArgentino.getName());
 
     }
 
     @Test
     public void testGetNameGBP() {
         Currency libra = new Currency("GBP", 1.0 / 0.73);
-        String nombreMoneda = libra.getName();
-        assertEquals("GBP", nombreMoneda);
+        assertEquals("GBP", libra.getName());
 
     }
 
     @Test
     public void testGetRateCLP() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
-        Double rateMoneda = pesoChileno.getRate();
-        assertEquals(1.0 / 788, rateMoneda);
+        assertEquals(1.0 / 788, pesoChileno.getRate());
     }
 
     @Test
     public void testGetRateARS() {
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
-        Double rateMoneda = pesoArgentino.getRate();
-        assertEquals(1.0 / 99, rateMoneda);
+        assertEquals(1.0 / 99, pesoArgentino.getRate());
     }
 
     @Test
     public void testGetRateGBP() {
         Currency libra = new Currency("GBP", 1.0 / 0.73);
-        Double rateMoneda = libra.getRate();
-        assertEquals(1.0 / 0.73, rateMoneda);
+        assertEquals(1.0 / 0.73, libra.getRate());
     }
 
     @Test
@@ -117,11 +108,7 @@ class CurrencyTest {
     public void testValueInThisCurrencyCLPToARS() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
-
-
-        Double arsToCLP = pesoChileno.valueInThisCurrency(1000.00, pesoArgentino);
-
-        assertEquals(7959.595, arsToCLP, 0.001);
+        assertEquals(7959.595, pesoChileno.valueInThisCurrency(1000.00, pesoArgentino), 0.001);
 
     }
 
@@ -129,11 +116,7 @@ class CurrencyTest {
     public void testValueInThisCurrencyGBPtoARS() {
         Currency libra = new Currency("GBP", 1.0 / 0.73);
         Currency pesoArgentino = new Currency("ARS", 1.0 / 99);
-
-
-        Double arsToGBP = pesoArgentino.valueInThisCurrency(1000.00, libra);
-
-        assertEquals(135616.43, arsToGBP, 0.01);
+        assertEquals(135616.43, pesoArgentino.valueInThisCurrency(1000.00, libra), 0.01);
 
     }
 
@@ -141,11 +124,7 @@ class CurrencyTest {
     public void testValueInThisCurrencyCLPToGBP() {
         Currency pesoChileno = new Currency("CLP", 1.0 / 788);
         Currency libra = new Currency("GBP", 1.0 / 0.73);
-
-
-        Double gbpToCLP = pesoChileno.valueInThisCurrency(1000.00, libra);
-
-        assertEquals(1079452.05, gbpToCLP, 0.01);
+        assertEquals(1079452.05, pesoChileno.valueInThisCurrency(1000.00, libra), 0.01);
 
     }
 
